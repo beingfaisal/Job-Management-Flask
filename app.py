@@ -1,4 +1,4 @@
-from flask import Flask , render_template, request, redirect, url_for
+from flask import Flask , render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 
 
@@ -10,6 +10,8 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'practicedb'
+app.secret_key = 'super secret key'
+app.config['SESSION_TYPE'] = 'filesystem'
 
 
 mysql = MySQL(app)
@@ -25,13 +27,18 @@ def login():
         cur.execute('SELECT * FROM users WHERE EMAIL = %s AND PIN = %s', ([log_email], [log_pin]))
         account = cur.fetchone()
 
+        flash("HELOOO")
+
         if account[3] == 'Technician':
+            session['user_id'] = log_email
             return redirect(url_for('technican'))
             # return render_template('technican.html')
         elif account[3] == 'Student':            
+            session['user_id'] = log_email
             return redirect(url_for('student'))
             # return render_template('student.html')
         elif account[3] == 'Admin':
+            session['user_id'] = log_email
             return redirect(url_for('admin'))
             # return render_template('admin.html')
         else:
@@ -59,14 +66,20 @@ def signup():
 
 @app.route('/student', methods=['GET','SET'])
 def student():
+    user_id = session.get('my_var', None)
+    flash("HELOOO")
     return render_template('student.html')
 
 @app.route('/technican', methods=['GET','SET'])
 def technican():
+    user_id = session.get('my_var', None)
+    flash("HELLOOO")
     return render_template('technican.html')
 
 @app.route('/admin', methods=['GET','SET'])
 def admin():
+    user_id = session.get('my_var', None)
+    flash(user_id)
     return render_template('admin.html')
 
 
