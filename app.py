@@ -67,20 +67,52 @@ def student():
     data = cur.fetchall()
     return render_template('student.html', data = data)
 
+
+
 @app.route('/technican', methods=['GET','SET'])
 def technican():
     cur = mysql.connection.cursor()
-    cur.execute('Select * from jobs')
+    cur.execute('Select users.name, jobs.job_title, jobs.job_description from users inner join jobs_creation on users.email= jobs_creation.CREATOR_ID inner join jobs on jobs.job_id = jobs_creation.job_id')
     data = cur.fetchall()
     
 
     user_id = session.get('user_id', None)
     return render_template('technican.html', data = data)
 
+
+
 @app.route('/admin', methods=['GET','SET'])
 def admin():
     user_id = session.get('user_id', None)
     return render_template('admin.html', user = user_id)
+
+
+@app.route('/problem-creation', methods=['GET','POST'])
+def problem_creation():
+    user_id = session.get('user_id',None)
+    if request.method == "POST":
+        
+        prob_title = request.form['problem_title']
+        prob_desc = request.form['problem_description']
+        cur = mysql.connection.cursor()
+        cur.execute('INSERT INTO JOBS(JOB_TITLE,JOB_DESCRIPTION) VALUES(%s,%s)',([prob_title],[prob_desc]))
+        
+        cur.execute('SELECT MAX(JOB_ID) FROM JOBS')
+        latest_id = cur.fetchone()
+
+        cur.execute('INSERT INTO JOBS_CREATION(CREATOR_ID,JOB_ID) VALUES(%s,%s)',([user_id],latest_id))
+        mysql.connection.commit()
+
+        flash("SUCCESS")
+
+        return redirect(url_for('student'))
+
+    
+
+
+    
+    return render_template('problem-creation.html', user = user_id)
+
 
 
 if __name__ == "__main__":

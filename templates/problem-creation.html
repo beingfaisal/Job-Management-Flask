@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/student.css') }}">
+    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/Student.css') }}">
     <title>Student</title>
   </head>
   <body>
@@ -16,13 +16,13 @@
       </div>
     </div>
     <div class="student-container">
-      <form>
+      <form method="POST">
         <h2 class="heading">Online Job Submission Platform</h2>
         <p class="job-title">Enter the Title of Your Problem</p>
         <input
           class="title"
           type="text"
-          name="description"
+          name="problem_title"
           placeholder="Enter well defined title"
         ></input>
 
@@ -30,9 +30,17 @@
         <textarea
           class="description"
           type="text"
-          name="description"
+          name="problem_description"
           placeholder="e.g. This job is about..."
         ></textarea>
+
+        <input
+            class="problem-creation"
+            type="submit"
+            name="submit"
+            value="Create"
+          />
+
       </form>
     </div>
   </body>

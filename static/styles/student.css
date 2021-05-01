@@ -47,6 +47,18 @@ span {
   height: 150px;
 }
 
+.problem-creation{
+  width: 50%;
+  padding: 11px;
+  cursor: pointer;
+  border: 1px solid #ffa500;
+  background-color: #ffa500;
+  font-size: 15px;
+  border-radius: 5px;
+  color: #ffffff;
+  transition: 0.3s;
+}
+
 .title {
   margin: 10px 0px 25px 0px;
   padding: 10px;
@@ -67,10 +79,10 @@ span {
 .tagline1 {
   font-weight: lighter;
   margin-bottom: 15px;
-  text-align: justify;
+  text-align: center;
 }
 
-.createbtn {
+.creation-btn{
   width: 170px;
   padding: 10px;
   font-size: 30px;
@@ -131,3 +143,5 @@ span {
   width: 80%;
   margin: 0 auto;
 }
+
+
