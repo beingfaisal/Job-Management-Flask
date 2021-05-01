@@ -19,7 +19,7 @@ span {
 }
 
 .jobtitle {
-  text-align: left;
+  text-align: justify;
   color: #002333;
   font-weight: bold;
   font-size: 22px;
@@ -60,15 +60,35 @@ span {
   margin-bottom: 20px;
 }
 .tagline {
-  font-size: 18px;
   font-weight: normal;
   margin-bottom: 15px;
+  text-align: justify;
+}
+.tagline1 {
+  font-weight: lighter;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+.createbtn {
+  width: 170px;
+  padding: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  border: 1px solid #ffa500;
+  background-color: #ffa500;
+  font-size: 15px;
+  border-radius: 5px;
+  color: #ffffff;
+  margin-top: 20px;
+  transition: 0.3s;
 }
 
 .job {
   margin: 40px auto;
-  padding: 10px;
+  padding: 15px;
   box-shadow: 0.5px 0.5px 2px 2px #ccc;
+  text-align: justify;
 }
 .status {
   margin-top: 2px;
