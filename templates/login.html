@@ -4,44 +4,46 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/auth.css') }}">
-    
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/auth.css') }}"
+    />
+
     <title>Document</title>
   </head>
   <body>
-
     <div class="flex-va-center">
-        <div class="auth-container">
-            <form action="/login" method = "POST">
-            <h2 class="login-form heading">Just login to continue</h2>
-            <input
-              class="login-form input"
-              type="text"
-              placeholder="Username or email"
-              name="log_email"
-            />
-            <input
-              class="login-form input"
-              type="password"
-              placeholder="Password"
-              name="log_password" 
-            />
+      <div class="auth-container">
+        <form action="/login" method="POST">
+          <h2 class="login-form heading">Just login to continue</h2>
+          <input
+            class="login-form input"
+            type="text"
+            placeholder="Username or email"
+            name="log_email"
+          />
+          <input
+            class="login-form input"
+            type="password"
+            placeholder="Password"
+            name="log_password"
+          />
 
-            <input
-              class="login-form btn"
-              type="submit"
-              name="submit"
-              value="Login"
-            />
-          </form>
-          <div class="other-auth">
-            <div class="other-auth text">
-              Don't have account?
-              <a class="other-auth link" href="/register" >Sign Up</a>
-              </Link>
-            </div>
+          <input
+            class="login-form btn"
+            type="submit"
+            name="submit"
+            value="Login"
+          />
+        </form>
+        <div class="other-auth">
+          <div class="other-auth text">
+            Don't have account?
+            <a class="other-auth link" href="/register">Sign Up</a>
           </div>
         </div>
       </div>
+    </div>
   </body>
 </html>

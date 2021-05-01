@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/student.css') }}">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/styles/student.css"
+    />
     <title>Student</title>
   </head>
   <body>
@@ -16,13 +20,22 @@
       </div>
     </div>
     <div class="student-portal-container">
-      <h2 class="tagline">
-        Welcome to the student portal. Following jobs are submitted by the
-        student.
-      </h2>
+      <div class="tagline">
+        Welcome to the student portal. Create new jobs to findout solutions for
+        your problems. Technicans will try to get back to you as early as
+        possible. So without wasting any time submit your problems and get
+        engage in discussion with the best people.<br /><br />
+      </div>
+      <div class="tagline1">
+        To Create a new job click on the following button.<br />
+        <button class="createbtn" href="/student-problem-submission.html">
+          Create New Job
+        </button>
+      </div>
     </div>
 
     <div class="job-container">
+      <div>Submitted Jobs are below</div>
       <div class="job">
         <div class="jobtitle">Jobs</div>
         This job is created in order to slove problems.That the facts mentioned
