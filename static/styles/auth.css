@@ -1,0 +1,57 @@
+.login-form {
+  text-align: center;
+}
+.heading {
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+.input {
+  text-align: left;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #555555;
+  font-size: 15px;
+}
+
+.btn {
+  width: 107%;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #ffa500;
+  background-color: #ffa500;
+  font-size: 15px;
+  border-radius: 5px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.flex-va-center {
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.auth-container {
+  max-width: 320px;
+  margin: 0px auto;
+}
+
+.other-auth {
+  text-align: center;
+}
+
+.link {
+  font-weight: 700;
+  margin-left: 10px;
+  color: #002333;
+}
+
+@media only screen and (max-width: 480px) {
+  .auth-container {
+    width: 80%;
+  }
+}
