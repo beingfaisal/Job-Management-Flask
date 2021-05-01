@@ -20,9 +20,21 @@
     </div>
 
     <div class="job-container">
+      {% for row  in data%}
+       
       <div class="job">
+          <div class="jobtitle">{{row[1]}}</div>
+          <div>Submitted by: {{row[0]}} </div>
+          <div class="status">
+            Status: <span class="status-span">active</span>
+          </div>
+          {{row[2]}}
+        </div>
+      {% endfor %}
+      
+      <!-- <div class="job">
         <div class="jobtitle">Jobs</div>
-        <div>Submitted by: </div>
+        <div>Submitted by: Ghous</div>
         <div class="status">
           Status: <span class="status-span">active</span>
         </div>
@@ -38,23 +50,11 @@
         <div class="status">
           Status: <span class="status-span">active</span>
         </div>
-
         This job is created in order to slove problems.That the facts mentioned
         in this complaint b. That no complaint on this subject has previously
         been lodged with Agency by me, or on my behalf.That the facts mentioned
         in this complaint are correct to the best of my knowledge and belief
-      </div>
-      <div class="job">
-        <div class="jobtitle">Jobs</div>
-        <div>Submitted by: Ghous</div>
-        <div class="status">
-          Status: <span class="status-span">active</span>
-        </div>
-        This job is created in order to slove problems.That the facts mentioned
-        in this complaint b. That no complaint on this subject has previously
-        been lodged with Agency by me, or on my behalf.That the facts mentioned
-        in this complaint are correct to the best of my knowledge and belief
-      </div>
+      </div> -->
     </div>
   </body>
 </html>

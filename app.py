@@ -1,4 +1,4 @@
-from flask import Flask , render_template, request, redirect, url_for, flash
+from flask import Flask , render_template, request, redirect, url_for, flash,session
 from flask_mysqldb import MySQL
 
 
@@ -10,8 +10,7 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'practicedb'
-app.secret_key = 'super secret key'
-app.config['SESSION_TYPE'] = 'filesystem'
+app.secret_key = 'abc'
 
 
 mysql = MySQL(app)
@@ -28,21 +27,16 @@ def login():
         account = cur.fetchone()
 
         flash("HELOOO")
-
-        if account[3] == 'Technician':
+        if account:
             session['user_id'] = log_email
-            return redirect(url_for('technican'))
-            # return render_template('technican.html')
-        elif account[3] == 'Student':            
-            session['user_id'] = log_email
-            return redirect(url_for('student'))
-            # return render_template('student.html')
-        elif account[3] == 'Admin':
-            session['user_id'] = log_email
-            return redirect(url_for('admin'))
-            # return render_template('admin.html')
-        else:
-            return "Incorrect"
+            if account[3] == 'Technician':
+                return redirect(url_for('technican'))
+            elif account[3] == 'Student':          
+                return redirect(url_for('student'))
+            elif account[3] == 'Admin':
+                return redirect(url_for('admin'))
+            else:
+                return "Incorrect"
 
 
     return render_template('login.html')
@@ -66,21 +60,23 @@ def signup():
 
 @app.route('/student', methods=['GET','SET'])
 def student():
-    user_id = session.get('my_var', None)
-    flash("HELOOO")
-    return render_template('student.html')
+    user_id = session.get('user_id', None)
+    return render_template('student.html', user = user_id)
 
 @app.route('/technican', methods=['GET','SET'])
 def technican():
-    user_id = session.get('my_var', None)
-    flash("HELLOOO")
-    return render_template('technican.html')
+    cur = mysql.connection.cursor()
+    cur.execute('Select * from jobs')
+    data = cur.fetchall()
+    
+
+    user_id = session.get('user_id', None)
+    return render_template('technican.html', data = data)
 
 @app.route('/admin', methods=['GET','SET'])
 def admin():
-    user_id = session.get('my_var', None)
-    flash(user_id)
-    return render_template('admin.html')
+    user_id = session.get('user_id', None)
+    return render_template('admin.html', user = user_id)
 
 
 if __name__ == "__main__":
