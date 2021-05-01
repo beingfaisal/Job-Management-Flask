@@ -61,7 +61,11 @@ def signup():
 @app.route('/student', methods=['GET','SET'])
 def student():
     user_id = session.get('user_id', None)
-    return render_template('student.html', user = user_id)
+    cur = mysql.connection.cursor()
+    
+    cur.execute('Select jobs.JOB_TITLE, jobs.JOB_DESCRIPTION FROM jobs INNER JOIN jobs_creation ON jobs.JOB_ID = jobs_creation.JOB_ID INNER join users on jobs_creation.CREATOR_ID = users.EMAIL WHERE users.EMAIL = %s', [user_id])
+    data = cur.fetchall()
+    return render_template('student.html', data = data)
 
 @app.route('/technican', methods=['GET','SET'])
 def technican():
