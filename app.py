@@ -41,7 +41,7 @@ def signup():
         reg_email = request.form['reg_email']
         reg_name = request.form['reg_name']
         reg_pin = request.form['reg_pin']
-        reg_type = req.form['reg_type']
+        reg_type = request.form.get('reg_type')
         cur = mysql.connection.cursor()
         cur.execute('INSERT INTO users(EMAIL,NAME,PIN,TYPE) VALUES(%s,%s,%s,%s)', ([reg_email], [reg_name],[reg_pin],[reg_type]))
         mysql.connection.commit()
