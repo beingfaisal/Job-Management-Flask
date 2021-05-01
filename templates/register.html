@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/auth.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "../static/styles/auth.css">
     <title>Document</title>
   </head>
   <body>
@@ -14,32 +14,29 @@
             <form action="/register" method = "POST">
             <h2 class="login-form heading">Just Sign Up to continue</h2>
             <input
-              class="login-form input"
+              class="input"
               type="text"
               placeholder="Email"
               name="reg_email"
             />
             <input
-              class="login-form input"
+              class="input"
               type="text"
               placeholder="Full Name"
               name="reg_name"
 
             />
             <input
-              class="login-form input"
+              class="input"
               type="password"
               placeholder="Password"
               name="reg_pin"
 
             />
-            <input
-              class="login-form input"
-              type="password"
-              placeholder="Confirm Password"
-              name="reg_confirm_pin"
-
-            />
+            <select name="reg_type" id="account-type" class="input dropdown" >
+            <option value="student">Student</option>
+            <option value="technican">Technican</option>
+            </select>
 
             <input
               class="login-form btn"

@@ -16,6 +16,10 @@
   font-size: 15px;
 }
 
+.dropdown {
+  width: 107%;
+}
+
 .btn {
   width: 107%;
   padding: 10px;
