@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/student.css') }}">
+    <title>Student</title>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="row row1">
+        <div class="logo">
+          Submit<span class="logo" style="color: white"> Jobs</span>
+        </div>
+      </div>
+    </div>
+    <div class="student-container">
+      <form>
+        <h2 class="heading">Online Job Submission Platform</h2>
+        <p class="job-title">Enter the Title of Your Problem</p>
+        <input
+          class="title"
+          type="text"
+          name="description"
+          placeholder="Enter well defined title"
+        ></input>
+
+        <p class="job-title">Enter the description of Your Problem</p>
+        <textarea
+          class="description"
+          type="text"
+          name="description"
+          placeholder="e.g. This job is about..."
+        ></textarea>
+      </form>
+    </div>
+  </body>
+</html>

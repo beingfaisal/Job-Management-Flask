@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/student.css') }}">
+    <script type="text/javascript">
+      window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+          title: {
+            text: "Jobs Resolved by each Technican",
+          },
+          axisY: {
+            title: "Jobs Resolved",
+          },
+          legend: {
+            verticalAlign: "bottom",
+            horizontalAlign: "center",
+          },
+          data: [
+            {
+              type: "column",
+              showInLegend: true,
+              legendMarkerType: "none",
+              legendText: "Technican Names",
+              dataPoints: [
+                { x: 1, y: 297, label: "Faisal" },
+                { x: 2, y: 017, label: "Zaheer" },
+                { x: 3, y: 520, label: "Zeeshan" },
+                { x: 4, y: 580, label: "Bilal" },
+                { x: 5, y: 600, label: "Krona" },
+                { x: 6, y: 800, label: "Malhi" },
+                { x: 7, y: 682, label: "Abdullah" },
+                { x: 8, y: 350, label: "Ali Hassan" },
+              ],
+            },
+          ],
+        });
+
+        chart.render();
+      };
+    </script>
+    <script
+      type="text/javascript"
+      src="https://canvasjs.com/assets/script/canvasjs.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="row row1">
+        <div class="logo">
+          Submit<span class="logo" style="color: white"> Jobs</span>
+        </div>
+      </div>
+    </div>
+    <div class="student-portal-container">
+      <h2 class="tagline">Welcome to the Technican portal.</h2>
+    </div>
+    <div
+      id="chartContainer"
+      style="height: 300px; width: 30%; margin: 10px auto"
+    ></div>
+  </body>
+</html>

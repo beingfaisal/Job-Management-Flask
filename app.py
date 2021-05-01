@@ -1,4 +1,4 @@
-from flask import Flask , render_template, request
+from flask import Flask , render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
 
 
@@ -25,8 +25,15 @@ def login():
         cur.execute('SELECT * FROM users WHERE EMAIL = %s AND PIN = %s', ([log_email], [log_pin]))
         account = cur.fetchone()
 
-        if account:
-            return "Success"
+        if account[3] == 'Technician':
+            return redirect(url_for('technican'))
+            # return render_template('technican.html')
+        elif account[3] == 'Student':            
+            return redirect(url_for('student'))
+            # return render_template('student.html')
+        elif account[3] == 'Admin':
+            return redirect(url_for('admin'))
+            # return render_template('admin.html')
         else:
             return "Incorrect"
 
@@ -50,6 +57,17 @@ def signup():
     return render_template('register.html')
 
 
+@app.route('/student', methods=['GET','SET'])
+def student():
+    return render_template('student.html')
+
+@app.route('/technican', methods=['GET','SET'])
+def technican():
+    return render_template('technican.html')
+
+@app.route('/admin', methods=['GET','SET'])
+def admin():
+    return render_template('admin.html')
 
 
 if __name__ == "__main__":
