@@ -19,7 +19,10 @@ span {
 }
 
 .jobtitle {
-  text-align: justify;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: #002333;
   font-weight: bold;
   font-size: 22px;
@@ -83,7 +86,8 @@ span {
 }
 
 .creation-btn{
-  width: 170px;
+  text-align: center;
+  width: 150px;
   padding: 10px;
   font-size: 30px;
   cursor: pointer;
@@ -92,7 +96,22 @@ span {
   font-size: 15px;
   border-radius: 5px;
   color: #ffffff;
-  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.create-btn{
+  text-align: center;
+  position: relative;
+  top: 20px;
+  width: 150px;
+  padding: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  border: 1px solid #ffa500;
+  background-color: #ffa500;
+  font-size: 15px;
+  border-radius: 5px;
+  color: #ffffff;
   transition: 0.3s;
 }
 

@@ -23,14 +23,15 @@
       {% for row  in data%}
        
       <div class="job">
-          <div class="jobtitle">{{row[1]}}</div>
+          <div class="jobtitle">{{row[1]}}
+            <a class="creation-btn" href="/resolvejob/{{row[4]}}">Resolve</a>
+          </div>
           <div>Submitted by: {{row[0]}} </div>
           <div class="status">
             Status: <span class="status-span">{{row[3]}}</span>
           </div>
           {{row[2]}}
 
-        <a href="/resolvejob/{{row[4]}}">Resolve</a>
         </div>
       {% endfor %}
       
