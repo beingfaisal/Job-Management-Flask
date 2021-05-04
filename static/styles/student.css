@@ -40,7 +40,6 @@ span {
   text-align: center;
   margin: 60px auto;
   padding: 0px 30px;
-  width: 65%;
 }
 
 .description {
@@ -76,6 +75,8 @@ span {
 }
 .tagline {
   font-weight: normal;
+  margin: auto 18%;
+
 }
 .tagline1 {
   font-weight: lighter;
@@ -195,6 +196,17 @@ span {
 }
 .logo-position {
   margin: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-position > div > h2{
+  font-size: 30px;
+}
+
+.logo-position > div > p{
+  margin: 5px 10%;
 }
 
 .img {
@@ -204,4 +216,22 @@ span {
 
 .flex-va-center1 {
   display: flex;
+}
+
+
+.signup-btn{
+  text-align: center;
+  position: relative;
+  top: 7px;
+  left: 25px;
+  padding: 10px 25px;
+  font-size: 30px;
+  cursor: pointer;
+  border: 1px solid #ffa500;
+  background-color: #ffa500;
+  font-size: 15px;
+  border-radius: 5px;
+  color: #ffffff;
+  transition: 0.3s;
+
 }
