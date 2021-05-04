@@ -85,13 +85,17 @@ def technican():
 def admin():
     user_id = session.get('user_id', None)
     cur = mysql.connection.cursor()
-    cur.execute('SELECT users.EMAIL, users.NAME, users.job_count from users WHERE users.TYPE = "Technician"')
-    data = cur.fetchall()
-    count = [row[2] for row in data]
-    names = [row[1] for row in data]
+    cur.execute('SELECT users.NAME, users.job_count from users WHERE users.TYPE = "Technician"')
+    tech_data = cur.fetchall()
+    tech_count = [row[1] for row in tech_data]
+    tech_names = [row[0] for row in tech_data]
     
-    test = 'Faisal'
-    return render_template('admin.html', user_data = data, count = count, names = names )
+    cur.execute('SELECT users.NAME, users.job_created from users WHERE users.TYPE = "Student"')
+    student_data = cur.fetchall()
+    student_count = [row[1] for row in student_data]
+    student_names = [row[0] for row in student_data]
+    
+    return render_template('admin.html', tech_count = tech_count, tech_names = tech_names, student_names = student_names, student_count = student_count )
 
 
 

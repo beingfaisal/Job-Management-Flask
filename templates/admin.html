@@ -7,7 +7,37 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/student.css') }}">
     <script type="text/javascript">
       window.onload = function () {
-        var chart = new CanvasJS.Chart("chartContainer", {
+        var chart = new CanvasJS.Chart("chartContainer1", {
+          title: {
+            text: "Jobs Created by each Student",
+          },
+          axisY: {
+            title: "Jobs Created",
+          },
+          legend: {
+            verticalAlign: "bottom",
+            horizontalAlign: "center",
+          },
+          data: [
+            {
+              type: "pie",
+              legendMarkerType: "none",
+              indexLabelFontColor: "#5A5757",
+              indexLabelFontSize: 16,
+              indexLabelPlacement: "outside",
+              legendText: "Student Names",
+              dataPoints: [
+                {% for x in range(student_names|length) %}
+                {x:" {{x+1}}", y: "{{student_count[x]}}", label: "{{student_names[x]}}"},
+                {% endfor %}
+              ],
+            },
+          ],
+        });
+        chart.render();
+
+
+        var chart = new CanvasJS.Chart("chartContainer2", {
           title: {
             text: "Jobs Resolved by each Technican",
           },
@@ -25,17 +55,15 @@
               indexLabelFontColor: "#5A5757",
               indexLabelFontSize: 16,
               indexLabelPlacement: "outside",
-              
               legendText: "Technican Names",
               dataPoints: [
-                {% for x in range(names|length) %}
-                {x:" {{x+1}}", y: "{{count[x]}}", label: "{{names[x]}}"},
+                {% for x in range(tech_names|length) %}
+                {x:" {{x+1}}", y: "{{tech_count[x]}}", label: "{{tech_names[x]}}"},
                 {% endfor %}
               ],
             },
           ],
         });
-
         chart.render();
       };
     </script>
@@ -56,8 +84,12 @@
       <h2 class="tagline">Welcome to the Technican portal.</h2>
     </div>
     <div
-      id="chartContainer"
-      style="height: 300px; width: 30%; margin: 10px auto"
+      id="chartContainer1"
+      style="height: 300px; width: 70%; margin: 10px auto"
+    ></div>
+    <div
+      id="chartContainer2"
+      style="height: 300px; width: 70%; margin: 30px auto"
     ></div>
   </body>
 </html>
