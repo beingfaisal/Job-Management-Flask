@@ -72,7 +72,7 @@ def student():
 @app.route('/technican', methods=['GET','SET'])
 def technican():
     cur = mysql.connection.cursor()
-    cur.execute('Select users.name, jobs.job_title, jobs.job_description, jobs.status, jobs.job_id from users inner join jobs_creation on users.email= jobs_creation.CREATOR_ID inner join jobs on jobs.job_id = jobs_creation.job_id')
+    cur.execute('Select users.name, jobs.job_title, jobs.job_description, jobs.status, jobs.job_id from users inner join jobs_creation on users.email= jobs_creation.CREATOR_ID inner join jobs on jobs.job_id = jobs_creation.job_id where jobs.status = "Active"')
     data = cur.fetchall()
     
 
@@ -84,7 +84,15 @@ def technican():
 @app.route('/admin', methods=['GET','SET'])
 def admin():
     user_id = session.get('user_id', None)
-    return render_template('admin.html', user = user_id)
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT users.EMAIL, users.NAME, users.job_count from users WHERE users.TYPE = "Technician"')
+    data = cur.fetchall()
+    count = [row[2] for row in data]
+    names = [row[1] for row in data]
+    
+    test = 'Faisal'
+    return render_template('admin.html', user_data = data, count = count, names = names )
+
 
 
 @app.route('/problem-creation', methods=['GET','POST'])
@@ -103,8 +111,6 @@ def problem_creation():
         cur.execute('INSERT INTO JOBS_CREATION(CREATOR_ID,JOB_ID) VALUES(%s,%s)',([user_id],latest_id))
         mysql.connection.commit()
 
-        flash("SUCCESS")
-
         return redirect(url_for('student'))
 
     return render_template('problem-creation.html', user = user_id)
@@ -118,6 +124,7 @@ def resolvejob(id):
     cur = mysql.connection.cursor()
     user_id = session.get('user_id', None) 
     cur.execute("Update jobs set jobs.STATUS = 'Resolved' where jobs.JOB_ID = %s", [job_id])
+    cur.execute("UPDATE users set users.job_count = users.job_count+1 where users.EMAIL = %s", [user_id])
     cur.execute("INSERT INTO jobs_resolved(RESOLVER_ID,JOB_ID) VALUES(%s,%s)", ([user_id],[job_id]))
     mysql.connection.commit()
     return redirect(url_for('technican'))
