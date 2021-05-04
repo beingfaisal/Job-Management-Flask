@@ -4,7 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/student.css') }}">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/student.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/Nav.css') }}"
+    />
     <script type="text/javascript">
       window.onload = function () {
         var chart = new CanvasJS.Chart("chartContainer1", {
@@ -81,7 +90,10 @@
       </div>
     </div>
     <div class="student-portal-container">
-      <h2 class="tagline">Welcome to the Technican portal.</h2>
+      <div class="logo-position">
+        <img class="img" alt="logo" src="../static/assets/logo.jpg" />
+        Welcome to the Admin portal
+      </div>
     </div>
     <div
       id="chartContainer1"

@@ -50,7 +50,7 @@ span {
   height: 150px;
 }
 
-.problem-creation{
+.problem-creation {
   width: 50%;
   padding: 11px;
   cursor: pointer;
@@ -83,7 +83,7 @@ span {
   text-align: center;
 }
 
-.creation-btn{
+.creation-btn {
   text-align: center;
   width: 150px;
   padding: 10px;
@@ -97,7 +97,7 @@ span {
   transition: 0.3s;
 }
 
-.create-btn{
+.create-btn {
   text-align: center;
   position: relative;
   top: 20px;
@@ -110,6 +110,22 @@ span {
   font-size: 15px;
   border-radius: 5px;
   color: #ffffff;
+  transition: 0.3s;
+}
+
+.back-btn {
+  text-align: center;
+  position: relative;
+  padding: 10px 20px;
+  margin-right: 6px;
+  font-size: 30px;
+  cursor: pointer;
+  border: 1px solid #ffa500;
+  background-color: #ffa500;
+  font-size: 15px;
+  border-radius: 5px;
+  color: #ffffff;
+
   transition: 0.3s;
 }
 
@@ -143,12 +159,16 @@ span {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
   background-color: #002333;
 }
+.row4 {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0px;
+}
 .row {
   display: flex;
   justify-content: space-between;
   padding: 15px 0px;
 }
-
 .logo {
   font-size: 29px;
   font-weight: 600;
@@ -156,9 +176,32 @@ span {
   margin-right: 20px;
 }
 
+.logo1 {
+  font-size: 29px;
+  font-weight: 600;
+  color: #ffa500;
+  margin-right: 20px;
+  margin-left: 30px;
+}
+
 .row1 {
   width: 80%;
   margin: 0 auto;
 }
 
+.row2 {
+  width: 95%;
+  margin: 0 auto;
+}
+.logo-position {
+  margin: 1px;
+}
 
+.img {
+  height: 120px;
+  width: 86px;
+}
+
+.flex-va-center1 {
+  display: flex;
+}

@@ -15,13 +15,25 @@
   border: 1px solid #555555;
   font-size: 15px;
 }
+.logo-position {
+  margin: 10px auto;
+}
 
+.img {
+  height: 200px;
+  width: 150px;
+}
+
+.flex-va-center1 {
+  margin-top: 20px;
+  display: flex;
+}
 .dropdown {
-  width: 107%;
+  width: 100%;
 }
 
 .btn {
-  width: 107%;
+  width: 100%;
   padding: 10px;
   cursor: pointer;
   border: 1px solid #ffa500;
@@ -35,8 +47,8 @@
 
 .flex-va-center {
   display: flex;
-  align-items: center;
-  min-height: 80vh;
+  margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 .auth-container {
