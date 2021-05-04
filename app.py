@@ -113,6 +113,8 @@ def problem_creation():
         latest_id = cur.fetchone()
 
         cur.execute('INSERT INTO JOBS_CREATION(CREATOR_ID,JOB_ID) VALUES(%s,%s)',([user_id],latest_id))
+        cur.execute("UPDATE users set users.job_created = users.job_created+1 where users.EMAIL =%s", [user_id])
+
         mysql.connection.commit()
 
         return redirect(url_for('student'))
