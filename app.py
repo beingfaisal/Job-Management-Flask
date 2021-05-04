@@ -94,8 +94,26 @@ def admin():
     student_data = cur.fetchall()
     student_count = [row[1] for row in student_data]
     student_names = [row[0] for row in student_data]
+
+    cur.execute('SELECT WEEK(event_time), count(*) From jobs_resolved GROUP BY WEEK(event_time)')
     
-    return render_template('admin.html', tech_count = tech_count, tech_names = tech_names, student_names = student_names, student_count = student_count )
+    weekly_resolved_data = cur.fetchall()
+    weekly_resolve_count = [row[1] for row in weekly_resolved_data]
+    resolve_week_num = [row[0] for row in weekly_resolved_data]
+
+
+    cur.execute('SELECT WEEK(event_time), count(*) From jobs_creation GROUP BY WEEK(event_time)')
+    weekly_created_data = cur.fetchall()
+    weekly_create_count = [row[1] for row in weekly_created_data]
+    creation_week_num = [row[0] for row in weekly_created_data]
+
+    
+    return render_template('admin.html', tech_count = tech_count, tech_names = tech_names, 
+    student_names = student_names, student_count = student_count,
+    weekly_resolve_count = weekly_resolve_count, resolve_week_num = resolve_week_num,
+    weekly_create_count = weekly_create_count, creation_week_num = creation_week_num,
+
+     )
 
 
 

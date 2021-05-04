@@ -74,6 +74,66 @@
           ],
         });
         chart.render();
+
+
+        var chart = new CanvasJS.Chart("chartContainer3", {
+          title: {
+            text: "Jobs Created by Student on Weekly Basis",
+          },
+          axisY: {
+            title: "Created Weekly",
+          },
+          legend: {
+            verticalAlign: "bottom",
+            horizontalAlign: "center",
+          },
+          data: [
+            {
+              type: "pie",
+              legendMarkerType: "none",
+              indexLabelFontColor: "#5A5757",
+              indexLabelFontSize: 16,
+              indexLabelPlacement: "outside",
+              legendText: "Technican Names",
+              dataPoints: [
+                {% for x in range(weekly_create_count|length) %}
+                {x:" {{x+1}}", y: "{{weekly_create_count[x]}}", label: "Week "+"{{creation_week_num[x]}}"},
+                {% endfor %}
+              ],
+            },
+          ],
+        });
+        chart.render();
+
+        
+        var chart = new CanvasJS.Chart("chartContainer4", {
+          title: {
+            text: "Jobs Resolved by Technician on Weekly Basis",
+          },
+          axisY: {
+            title: "Resolved Weekly",
+          },
+          legend: {
+            verticalAlign: "bottom",
+            horizontalAlign: "center",
+          },
+          data: [
+            {
+              type: "pie",
+              legendMarkerType: "none",
+              indexLabelFontColor: "#5A5757",
+              indexLabelFontSize: 16,
+              indexLabelPlacement: "outside",
+              legendText: "Technican Names",
+              dataPoints: [
+                {% for x in range(weekly_resolve_count|length) %}
+                {x:" {{x+1}}", y: "{{weekly_resolve_count[x]}}", label: "Week "+"{{resolve_week_num[x]}}"},
+                {% endfor %}
+              ],
+            },
+          ],
+        });
+        chart.render();
       };
     </script>
     <script
@@ -101,6 +161,14 @@
     ></div>
     <div
       id="chartContainer2"
+      style="height: 300px; width: 70%; margin: 30px auto"
+    ></div>
+    <div
+      id="chartContainer3"
+      style="height: 300px; width: 70%; margin: 30px auto"
+    ></div>
+    <div
+      id="chartContainer4"
       style="height: 300px; width: 70%; margin: 30px auto"
     ></div>
   </body>
