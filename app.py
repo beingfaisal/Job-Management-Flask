@@ -9,7 +9,12 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'cs2s.yorkdc.net'
 app.config['MYSQL_USER'] = 'noman.rafique'
 app.config['MYSQL_PASSWORD'] = 'KPKT8GWX'
-app.config['MYSQL_DB'] = 'nomanrafique_test'
+app.config['MYSQL_DB'] = 'nomanrafique_flaskApp'
+
+# app.config['MYSQL_HOST'] = 'localhost'
+# app.config['MYSQL_USER'] = 'root'
+# app.config['MYSQL_PASSWORD'] = ''
+# app.config['MYSQL_DB'] = 'practicedb'
 app.secret_key = 'abc'
 
 
@@ -125,12 +130,13 @@ def problem_creation():
         prob_title = request.form['problem_title']
         prob_desc = request.form['problem_description']
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO JOBS(JOB_TITLE,JOB_DESCRIPTION) VALUES(%s,%s)',([prob_title],[prob_desc]))
+        cur.execute('INSERT INTO jobs(JOB_TITLE,JOB_DESCRIPTION) VALUES(%s,%s)',([prob_title],[prob_desc]))
         
-        cur.execute('SELECT MAX(JOB_ID) FROM JOBS')
+        cur.execute('SELECT MAX(JOB_ID) FROM jobs')
         latest_id = cur.fetchone()
+        print(latest_id, user_id)
 
-        cur.execute('INSERT INTO JOBS_CREATION(CREATOR_ID,JOB_ID, event_time) VALUES(%s,%s, curdate())',([user_id],latest_id))
+        cur.execute('INSERT INTO jobs_creation(CREATOR_ID,JOB_ID, event_time) VALUES(%s,%s, curdate())',([user_id],latest_id))
         cur.execute("UPDATE users set users.job_created = users.job_created+1 where users.EMAIL =%s", [user_id])
 
         mysql.connection.commit()
