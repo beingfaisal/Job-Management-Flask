@@ -6,10 +6,10 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'practicedb'
+app.config['MYSQL_HOST'] = 'cs2s.yorkdc.net'
+app.config['MYSQL_USER'] = 'noman.rafique'
+app.config['MYSQL_PASSWORD'] = 'KPKT8GWX'
+app.config['MYSQL_DB'] = 'nomanrafique_test'
 app.secret_key = 'abc'
 
 
@@ -130,7 +130,7 @@ def problem_creation():
         cur.execute('SELECT MAX(JOB_ID) FROM JOBS')
         latest_id = cur.fetchone()
 
-        cur.execute('INSERT INTO JOBS_CREATION(CREATOR_ID,JOB_ID) VALUES(%s,%s)',([user_id],latest_id))
+        cur.execute('INSERT INTO JOBS_CREATION(CREATOR_ID,JOB_ID, event_time) VALUES(%s,%s, curdate())',([user_id],latest_id))
         cur.execute("UPDATE users set users.job_created = users.job_created+1 where users.EMAIL =%s", [user_id])
 
         mysql.connection.commit()
@@ -149,7 +149,7 @@ def resolvejob(id):
     user_id = session.get('user_id', None) 
     cur.execute("Update jobs set jobs.STATUS = 'Resolved' where jobs.JOB_ID = %s", [job_id])
     cur.execute("UPDATE users set users.job_count = users.job_count+1 where users.EMAIL = %s", [user_id])
-    cur.execute("INSERT INTO jobs_resolved(RESOLVER_ID,JOB_ID) VALUES(%s,%s)", ([user_id],[job_id]))
+    cur.execute("INSERT INTO jobs_resolved(RESOLVER_ID,JOB_ID, event_time) VALUES(%s,%s,curdate())", ([user_id],[job_id]))
     mysql.connection.commit()
     return redirect(url_for('technican'))
     
