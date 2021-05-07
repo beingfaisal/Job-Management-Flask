@@ -23,6 +23,9 @@
         <div class="logo">
           Submit<span class="logo" style="color: white"> Jobs</span>
         </div>
+        <div class="signup-btn">
+          <a  href="/logout">Logout</a>
+        </div>
       </div>
     </div>
     <div class="student-portal-container">
@@ -35,7 +38,8 @@
     </div>
 
     <div class="job-container">
-      {% for row in data%}
+      <h2> Here are the Active Jobs</h2>
+      {% for row in active_data%}
 
       <div class="job">
         <div class="jobtitle">
@@ -43,10 +47,31 @@
           <a class="creation-btn" href="/resolvejob/{{row[4]}}">Resolve</a>
         </div>
         <div>Submitted by: {{row[0]}}</div>
+        <div>Submitted At: {{row[5]}}</div>
+        <div>Student Email: {{row[6]}}</div>
+
+
         <div class="status">
           Status: <span class="status-span">{{row[3]}}</span>
         </div>
         {{row[2]}}
+      </div>
+      {% endfor %}
+    </div>
+
+
+    <div class="job-container">
+      <h2>Here are the Resolved Jobs</h2>
+      {% for row in resolved_data %}
+      <div class="job">
+        <div class="jobtitle">{{row[2]}}</div>
+        <div>Created by: {{row[0]}}</div>
+        <div>Created At: {{row[1]}}</div>
+        <div>Student Email: {{row[5]}}</div>
+        <div class="status">
+          Status: <span class="status-span">{{row[4]}}</span>
+        </div>
+        {{row[3]}}
       </div>
       {% endfor %}
     </div>
