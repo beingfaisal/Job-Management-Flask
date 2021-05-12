@@ -71,3 +71,19 @@
     width: 80%;
   }
 }
+
+
+.back-btn{
+  position: relative;
+  top: 8px;
+  text-align: center;
+  font-size: 25px;
+  padding: 10px 25px;
+  cursor: pointer;
+  border: 1px solid #ffa500;
+  background-color: #ffa500;
+  font-size: 15px;
+  border-radius: 5px;
+  color: #ffffff;
+  transition: 0.3s;
+}

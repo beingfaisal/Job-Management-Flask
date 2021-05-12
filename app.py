@@ -58,9 +58,13 @@ def signup():
             reg_pin = request.form['reg_pin']
             reg_type = request.form.get('reg_type')
             cur = mysql.connection.cursor()
-            cur.execute('INSERT INTO users(EMAIL,NAME,PIN,TYPE) VALUES(%s,%s,%s,%s)', ([reg_email], [reg_name],[reg_pin],[reg_type]))
-            mysql.connection.commit()
-            flash('Successfully added')
+            try:
+                cur.execute('INSERT INTO users(EMAIL,NAME,PIN,TYPE) VALUES(%s,%s,%s,%s)', ([reg_email], [reg_name],[reg_pin],[reg_type]))
+            except Exception:
+                flash('Invalid Input')
+            else:
+                mysql.connection.commit()
+                flash('Successfully Registered')
         return render_template('register.html')
     else:
         return "Acces Denied"
